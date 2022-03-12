@@ -21,8 +21,11 @@ import {v4 as uuidv4} from 'uuid'
         text: 'This is feedback item 3',
         rating: 5
       }
-
      ])
+     const [feedbackEdit, setFeedbackEdit] = useState({
+       item:{},
+       edit: false
+     })
      const addFeedback = (newFeedback) => {
         newFeedback.id = uuidv4()
         setFeedback([newFeedback, ...feedback])
@@ -32,12 +35,22 @@ import {v4 as uuidv4} from 'uuid'
         setFeedback(feedback.filter((item) => item.id !== id))
     }
     }
+    
+    const editFeedback = (item) => {
+        setFeedbackEdit({
+          item,
+          edit: true
+        })
+    }
+
 
     return <FeebackContext.Provider 
     value={{
        feedback,
        deleteFeedback,
        addFeedback,
+       editFeedback,
+       feedbackEdit
      }}>
         {children}
     </FeebackContext.Provider>
