@@ -4,7 +4,7 @@ import FeebackContext from '../context/FeedbackContext'
 function RatingSelect({select}) {
    const [selected, setSelected] = useState(10)
 
-   const{addFeedback, feedbackEdit} = useContext(FeebackContext)
+   const{feedbackEdit} = useContext(FeebackContext)
 
     useEffect(() => {
         setSelected(feedbackEdit.item.rating)
